@@ -43,11 +43,12 @@ function playRound(playerSelection, computerSelection) {
 }
 
 function game() {
-    String playerChoice;
+    let playerChoice = "";
+    let result = "";
     console.log("Starting new game");
     for(let i=0; i < NUM_OF_ROUNDS; i++) {
         playerChoice = prompt("Rock, Paper, or Scissors?");
-        let result = playRound(playerChoice, getComputerChoice());
+        result = playRound(playerChoice, getComputerChoice());
         console.log(result);
         console.log("Player score: " + playerWinCounter + "  Computer score: " + computerWinCounter);
     }
