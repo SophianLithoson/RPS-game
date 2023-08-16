@@ -5,22 +5,23 @@ function getComputerChoice() {
 }
 
 function playRound(playerSelection, computerSelection) {
-    if(String.toUpper(playerSelection)===String.toUpper(computerSelection)) 
+    if(playerSelection.toUpperCase()===computerSelection.toUpperCase()) 
         return "It's a tie! You both chose: " + playerSelection;
-    else switch(String.toUpper(playerSelection)) {
+    else switch(playerSelection.toUpperCase()) {
         case "ROCK":
-            if(String.toUpper(computerSelection) === "PAPER")
+            if(computerSelection.toUpperCase() === "PAPER")
                 return "You lose! Paper beats Rock."
             else
                 return "You win! Rock beats Scissors!"
         case "PAPER":
-            if(String.toUpper(computerSelection) === "SCISSORS")
+            if(computerSelection.toUpperCase() === "SCISSORS")
                 return "You lose! Scissors beats paper."
             else
                 return "You win! Paper beats Rock!"
         case "SCISSORS":
-            if(String.toUpper(computerSelection) === "PAPER")
+            if(computerSelection.toUpperCase() === "PAPER")
                 return "You lose! Paper beats Rock."
             else
                 return "You win! Rock beats Scissors!"
+    }
 }
