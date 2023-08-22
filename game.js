@@ -10,6 +10,8 @@ function getComputerChoice() {
 }
 
 function playRound(playerSelection, computerSelection) {
+    console.log("received playerSelection: " + playerSelection + " and computerSelection: " + computerSelection);
+
     if(playerSelection.toUpperCase()===computerSelection.toUpperCase()) 
         updateScoreAndAddResult("It's a tie! You both chose: " + playerSelection);
     else switch(playerSelection.toUpperCase()) {
@@ -70,9 +72,10 @@ function updateScoreAndAddResult(resultText) {
     }
 }
 
-const btns = document.querySelectorAll('b');
+const btns = document.querySelectorAll('button');
 btns.forEach((btn) => {
     btn.addEventListener('click', function listenForClick() {
+        console.count("detected click");
         playRound(btn.value, getComputerChoice());
     });
 });
