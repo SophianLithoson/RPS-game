@@ -1,4 +1,3 @@
-const NUM_OF_ROUNDS = 5;
 let playerWinCounter = 0;
 let computerWinCounter = 0;
 

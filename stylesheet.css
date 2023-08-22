@@ -1,0 +1,22 @@
+.banner {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 5px;
+}
+
+.scores-container {
+    background-color: rgb(40, 35, 87);
+    color: #f0f0f0;
+    display: flex;
+    justify-content: space-between;
+    width: 600px;
+}
+
+.player-score {
+    margin-right: auto;
+}
