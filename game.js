@@ -1,5 +1,7 @@
 let playerWinCounter = 0;
-let computerWinCounter = 0;
+let opponentWinCounter = 0;
+let numRounds = 0;
+const maxRounds = 5;
 
 function getComputerChoice() {
     const intBetweenZeroAndTwo = Math.floor(Math.random()*3);
@@ -9,39 +11,73 @@ function getComputerChoice() {
 
 function playRound(playerSelection, computerSelection) {
     if(playerSelection.toUpperCase()===computerSelection.toUpperCase()) 
-        return "It's a tie! You both chose: " + playerSelection;
+        updateScoreAndAddResult("It's a tie! You both chose: " + playerSelection);
     else switch(playerSelection.toUpperCase()) {
         case "ROCK":
             if(computerSelection.toUpperCase() === "PAPER") {
-                computerWinCounter++;
-                return "You lose! Paper beats Rock."
+                opponentWinCounter++;
+                updateScoreAndAddResult("You lose! Paper beats Rock.");
+                return;
             }
             else {
                 playerWinCounter++;
-                return "You win! Rock beats Scissors!"
+                updateScoreAndAddResult("You win! Rock beats Scissors!");
+                return;
             }
         case "PAPER":
             if(computerSelection.toUpperCase() === "SCISSORS") {
-                computerWinCounter++;
-                return "You lose! Scissors beats paper."
+                opponentWinCounter++;
+                updateScoreAndAddResult("You lose! Scissors beats paper.");
+                return;
             }
             else {
                 playerWinCounter++;
-                return "You win! Paper beats Rock!"
+                updateScoreAndAddResult("You win! Paper beats Rock!");
+                return;
             }
         case "SCISSORS":
             if(computerSelection.toUpperCase() === "PAPER") {
-                computerWinCounter++;
-                return "You lose! Paper beats Rock."
+                opponentWinCounter++;
+                updateScoreAndAddResult("You lose! Paper beats Rock.");
+                return;
             }
             else {
                 playerWinCounter++;
-                return "You win! Rock beats Scissors!"
+                updateScoreAndAddResult("You win! Rock beats Scissors!");
+                return;
             }
     }
 }
 
-function game() {
+function updateScoreAndAddResult(resultText) {
+    const playerScore = document.querySelector('.player-score');
+    const opponentScore = document.querySelector('.opponent-score');
+    const resultsContainer = document.querySelector('.results-container');
+    const resultToAdd = document.createElement('p');
+
+    playerScore.textContent = playerWinCounter;
+    opponentScore.textContent = opponentWinCounter;
+    resultToAdd.textContent = resultText;
+    resultsContainer.appendChild(resultToAdd);
+
+    // Now that the round is finished, remove the click listeners if we have reached the end
+
+    if(numRounds >= maxRounds) {
+        const btns = document.querySelectorAll('b');
+        btns.forEach((btn) => {
+            btn.removeEventListener('click', listenForClick());
+        });
+    }
+}
+
+const btns = document.querySelectorAll('b');
+btns.forEach((btn) => {
+    btn.addEventListener('click', function listenForClick() {
+        playRound(btn.value, getComputerChoice());
+    });
+});
+
+/* function game() {
     let playerChoice = "";
     let result = "";
     console.log("Starting new game");
@@ -49,6 +85,7 @@ function game() {
         playerChoice = prompt("Rock, Paper, or Scissors?");
         result = playRound(playerChoice, getComputerChoice());
         console.log(result);
-        console.log("Player score: " + playerWinCounter + "  Computer score: " + computerWinCounter);
+        console.log("Player score: " + playerWinCounter + "  Computer score: " + opponentWinCounter);
     }
 }
+*/

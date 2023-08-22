@@ -23,6 +23,7 @@
 
 .player-score {
     margin-right: auto;
+    min-width: 1em;
 }
 
 .opponent-score {
